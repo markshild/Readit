@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def logout
     @current_user.reset_token! if signed_in?
     session[:session_token] = nil
-    redirect to new_session_url
+    redirect_to new_session_url
   end
 
   def current_user
@@ -20,5 +20,11 @@ class ApplicationController < ActionController::Base
 
   def signed_in?
     !!current_user
+  end
+
+  def current_is_moderator
+    unless current_user.id == Sub.find(params[:id]).moderator
+      redirect_to subs_url
+    end
   end
 end

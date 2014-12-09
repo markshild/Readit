@@ -10,6 +10,20 @@
   <% if flash[:errors] %>
     <%= flash[:errors].each {|error| error } %>
   <% end %>
+
+  <% if flash[:messages] %>
+    <%= flash[:messages].each {|error| error } %>
+  <% end %>
+
+  <% unless signed_in? %>
+    <%= link_to "Sign In", new_session_url %><br>
+    <%= link_to "Sign Up", new_user_url %>
+  <% else %>
+    <%= link_to "Sign Out", session_url, method: :delete %>
+  <% end %>
+
+  <br>
+
 <%= yield %>
 
 </body>
