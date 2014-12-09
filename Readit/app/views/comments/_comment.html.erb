@@ -1,11 +1,11 @@
 <li>
   <%= link_to "#{comment.content}", comment_url(comment) %>
+  <br>
+  <%= comment.user.username %>
+  <%= comment.created_at %>
   <ul>
-    <% unless comment.children.nil? %>
-      <%= render comment.children %>
-        <%# comment.children.each do |child| %>
-          <%#= render "comments/comment", comment: child %>
-        <%# end %>
+    <% @all_comments.each do |child| %>
+      <%= render 'comments/comment', comment: child if comment.id == child.parent_comment_id %>
     <% end %>
   </ul>
 </li>
