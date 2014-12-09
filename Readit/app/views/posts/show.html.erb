@@ -5,6 +5,18 @@
 <p><%= @post.content %></p>
 <br>
 
+<ul>
+<% @post.comments.each do |comment| %>
+  <% if comment.parent_comment_id.nil? %>
+    <li>
+      <%= comment.content %><br>
+      <%= comment.user.username %><br>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+
+<br>
 <%= link_to "Edit this Post", edit_post_url(@post) %>
 <br>
 <%= link_to "Back to All Subs", subs_url %>

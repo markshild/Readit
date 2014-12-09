@@ -10,9 +10,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    fail
-    @post.author_id = current_user.id
-    @post.sub_ids = params[:post][:sub_ids]
     if @post.save
       flash[:messages] = ["Post successfully created!"]
       redirect_to post_url(@post)
