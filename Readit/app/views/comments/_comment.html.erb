@@ -1,0 +1,11 @@
+<li>
+  <%= link_to "#{comment.content}", comment_url(comment) %>
+  <ul>
+    <% unless comment.children.nil? %>
+      <%= render comment.children %>
+        <%# comment.children.each do |child| %>
+          <%#= render "comments/comment", comment: child %>
+        <%# end %>
+    <% end %>
+  </ul>
+</li>

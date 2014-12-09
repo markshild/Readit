@@ -1,0 +1,34 @@
+<h1>Read this comment</h1>
+
+<br>
+<%= @comment.content %><br>
+
+<ul>
+<% @comment.children.each do |child| %>
+  <li>
+    <%= link_to child.content, comment_url(child)  %>
+  </li>
+<% end %>
+</ul
+
+<br>
+
+<form action="<%= comments_url %>" method="post">
+  <%= auth_token %>
+
+  Comment on this comment (injection attack time!)
+
+  <br>
+
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id %>">
+
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= params[:id] %>">
+
+  <label>Comment:
+    <textarea name="comment[content]" rows="8" cols="40"></textarea>
+  </label>
+
+  <br>
+
+  <input type="submit" value="Submit!">
+</form>
