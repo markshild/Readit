@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_is_moderator
-    unless current_user.id == Sub.find(params[:id]).moderator
+    unless current_user.id == Sub.find(params[:id]).moderator_id
       redirect_to subs_url
     end
   end

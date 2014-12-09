@@ -1,0 +1,8 @@
+<h1><%= @post.title.capitalize %></h1>
+
+<p><a href=<%= @post.url %>><%= @post.url %></a></p>
+
+<p><%= @post.content %></p>
+
+<br>
+<%= link_to "Back to Sub", sub_url(@post.sub_id) %>

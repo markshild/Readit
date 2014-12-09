@@ -8,11 +8,11 @@
 </head>
 <body>
   <% if flash[:errors] %>
-    <%= flash[:errors].each {|error| error } %>
+    <%= flash[:errors].each {|error| error } %><br>
   <% end %>
 
   <% if flash[:messages] %>
-    <%= flash[:messages].each {|error| error } %>
+    <%= flash[:messages].each {|error| error } %><br>
   <% end %>
 
   <% unless signed_in? %>

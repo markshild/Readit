@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209152322) do
+ActiveRecord::Schema.define(version: 20141209162649) do
 
   create_table "posts", force: true do |t|
     t.string   "title",      null: false
@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 20141209152322) do
   add_index "posts", ["sub_id"], name: "index_posts_on_sub_id"
 
   create_table "subs", force: true do |t|
-    t.string   "title",       null: false
+    t.string   "title",        null: false
     t.text     "description"
-    t.integer  "moderator",   null: false
+    t.integer  "moderator_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "subs", ["moderator"], name: "index_subs_on_moderator"
+  add_index "subs", ["moderator_id"], name: "index_subs_on_moderator_id"
 
   create_table "users", force: true do |t|
     t.string   "password_digest", null: false

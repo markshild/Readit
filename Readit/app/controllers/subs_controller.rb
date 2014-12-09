@@ -1,5 +1,5 @@
 class SubsController < ApplicationController
-  before_action :current_is_moderator only: [:edit, :update]
+  before_action :current_is_moderator, only: [:edit, :update]
 
   def index
     @subs = Sub.all
@@ -11,7 +11,7 @@ class SubsController < ApplicationController
 
   def create
     @sub = Sub.new(sub_params)
-    @sub.moderator = current_user.id
+    @sub.moderator_id = current_user.id
     if @sub.save
       flash[:messages] = ["Sub successfully created!!!!!!!!!!!"]
       redirect_to sub_url(@sub)
