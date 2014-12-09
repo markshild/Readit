@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  validates :title, :sub_id,:author_id, presence: true
+  validates :title, :author_id, presence: true
 
 
   belongs_to(
@@ -9,10 +9,7 @@ class Post < ActiveRecord::Base
     primary_key: :id
   )
 
-  belongs_to(
-    :sub,
-    class_name: "Sub",
-    foreign_key: :sub_id,
-    primary_key: :id
-  )
+  has_many :post_subs, inverse_of: :post
+
+  has_many :subs, through: :post_subs, source: :sub
 end

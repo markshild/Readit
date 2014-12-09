@@ -27,4 +27,10 @@ class ApplicationController < ActionController::Base
       redirect_to subs_url
     end
   end
+
+  def post_author_is_user
+    unless current_user.id == Post.find(params[:id]).author_id
+      redirect_to post_url(Post.find(params[:id]))
+    end
+  end
 end

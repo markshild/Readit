@@ -5,8 +5,6 @@
     <input type="hidden" name="_method" value="PATCH">
   <% end %>
 
-  <input type="hidden" name="post[sub_id]" value="1">
-
   <label>Title
     <input type="text" name="post[title]" value="<%= post.title %>">
   </label>
@@ -21,5 +19,17 @@
     <textarea name="post[content]" rows="4" cols="40"><%= post.content %></textarea>
   </label>
   <br>
+
+  <input type="hidden" name="post[sub_ids][]">
+
+  <label>Subs<br>
+    <% Sub.all.each do |s| %>
+      <input type="checkbox" name="post[sub_ids][]" value="<%= s.id %>"
+      <%= "checked" if post.persisted? && post.subs.include?(s) %>><%= s.title %><br>
+    <% end %>
+  </label>
+
+  <br>
+
   <input type="submit" value="Submit">
 </form>

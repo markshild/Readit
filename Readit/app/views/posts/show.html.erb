@@ -3,6 +3,8 @@
 <p><a href=<%= @post.url %>><%= @post.url %></a></p>
 
 <p><%= @post.content %></p>
-
 <br>
-<%= link_to "Back to Sub", sub_url(@post.sub_id) %>
+
+<%= link_to "Edit this Post", edit_post_url(@post) %>
+<br>
+<%= link_to "Back to All Subs", subs_url %>

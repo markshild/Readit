@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  before_action :post_author_is_user, only: [:edit, :update]
   def index
     @posts = Post.all
   end
@@ -9,8 +9,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
+    fail
     @post.author_id = current_user.id
+    @post.sub_ids = params[:post][:sub_ids]
     if @post.save
       flash[:messages] = ["Post successfully created!"]
       redirect_to post_url(@post)
@@ -41,7 +43,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content, sub_ids: [])
   end
 
 end

@@ -8,5 +8,6 @@ class Sub < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many :posts
+  has_many :post_subs, inverse_of: :sub
+  has_many :posts, through: :post_subs, source: :post
 end
