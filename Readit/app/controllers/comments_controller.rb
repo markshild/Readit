@@ -3,10 +3,10 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     if @comment.save
       flash[:messages] = ["Comment Saved!"]
-      redirect_to post_url(params[:comment][:post_id])
+      redirect_to post_url(@comment.post_id)
     else
       flash[:errors] = @comment.errors.full_messages
-      redirect_to post_url(params[:comment][:post_id])
+      redirect_to post_url(@comment.post_id)
     end
   end
 

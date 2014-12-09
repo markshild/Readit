@@ -13,7 +13,7 @@ class SubsController < ApplicationController
     @sub = Sub.new(sub_params)
     @sub.moderator_id = current_user.id
     if @sub.save
-      flash[:messages] = ["Sub successfully created!!!!!!!!!!!"]
+      flash[:messages] = ["Sub successfully created!"]
       redirect_to sub_url(@sub)
     else
       flash.now[:errors] = @sub.errors.full_messages

@@ -9,9 +9,8 @@ class ApplicationController < ActionController::Base
   end
 
   def logout
-    @current_user.reset_token! if signed_in?
+    current_user.reset_token! if signed_in?
     session[:session_token] = nil
-    redirect_to new_session_url
   end
 
   def current_user

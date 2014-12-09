@@ -4,8 +4,6 @@
   <%= comment.user.username %>
   <%= comment.created_at %>
   <ul>
-    <% @all_comments.each do |child| %>
-      <%= render 'comments/comment', comment: child if comment.id == child.parent_comment_id %>
-    <% end %>
+    <%= render @all_comments[comment.id]%>
   </ul>
 </li>

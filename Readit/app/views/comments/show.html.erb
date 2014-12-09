@@ -30,5 +30,11 @@
 
   <br>
 
+  <% unless @comment.parent_comment_id.nil? %>
+    <%= link_to "Back to parent", comment_url(@comment.parent_comment_id) %>
+  <% end %>
+
+  <br>
+
   <input type="submit" value="Submit!">
 </form>

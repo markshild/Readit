@@ -25,11 +25,11 @@
   <label>Subs<br>
     <% Sub.all.each do |s| %>
       <input type="checkbox" name="post[sub_ids][]" value="<%= s.id %>"
-      <%= "checked" if post.persisted? && post.subs.include?(s) %>><%= s.title %><br>
+      <%= "checked" if post.subs.include?(s) %>><%= s.title %><br>
     <% end %>
   </label>
 
   <br>
 
-  <input type="submit" value="Submit">
+  <input type="submit">
 </form>
