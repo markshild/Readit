@@ -7,9 +7,9 @@
 
 <ul>
   <%= render @all_comments[nil] %>
-    <%#= render "comments/comment", comment: comment %>
-  <%# end %>
 </ul>
+<br>
+<%= link_to "Add a Comment", new_post_comment(@post) %>
 
 <br>
 <%= link_to "Edit this Post", edit_post_url(@post) %>
